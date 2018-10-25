@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Product Inventory</title>{% endblock %}
+
+{% block content %}
+    <h1>Inventory Command Center</h1>
+    <p>Welcome to your product dashboard. Below displays data about your inventory.</p>
+    <h2>Dynamic content</h2>
+    <p>Your inventory has the following record counts:</p>
+    <ul>
+        <li><strong>Products:</strong> {{ num_products }}</li>
+        <li><strong>Products currently in stock:</strong> {{ num_instances_available }}</li>
+        <li><strong>Brands:</strong> {{ num_brands }} </li>
+        <li><strong>Category Types:</strong> {{ num_categories }}</li>
+    </ul>
+{% endblock %}

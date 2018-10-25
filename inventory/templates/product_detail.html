@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ product.name }}</h1>
+
+    <div>
+        {% for stock in product.productinstance_set.all %}
+          <hr>
+          <p class="{% if stock.status == 'y' %}text-success{% elif stock.status == 'n' %}text-danger{% else %}text-warning{% endif %}">{{ stock.get_status_display }}</p>
+        {% endfor %}
+    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Product Code:</strong> {{ product.code }}</li>
+        <li class="list-group-item"><strong>Brand:</strong> <a href="{% url 'brand-detail' product.brand.pk %}">{{ product.brand }}</a></li>
+        <li class="list-group-item"><strong>Description:</strong> {{ product.description }}</li>
+        <li class="list-group-item"><strong>List Price:</strong> {{ product.list_price }}</li>
+        <li class="list-group-item"><strong>Discount Percent:</strong> {{ product.discount_percent }}</li>
+        <li class="list-group-item"><strong>Serving Size:</strong> {{ product.serving_size }}</li>
+        <li class="list-group-item"><strong>Amount in Inventory:</strong> {{ product.inventory_amount }}</li>
+        <li class="list-group-item"><strong>Flavors:</strong> {% for flavors in product.flavors.all %} {{ flavors }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+        <li class="list-group-item"><strong>Category:</strong> {% for category in product.category.all %} {{ category }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+    </ul>
+    <br>
+    <a class="btn btn-success my-2 my-sm-0" href="{% url 'product-update' product.pk %}">Update</a>
+    <a class="btn btn-danger my-2 my-sm-0" href="{% url 'product-delete' product.pk %}">Delete</a>
+
+{% endblock %}
