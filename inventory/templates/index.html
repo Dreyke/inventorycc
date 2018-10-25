@@ -3,14 +3,43 @@
 {% block title %}<title>Product Inventory</title>{% endblock %}
 
 {% block content %}
-    <h1>Inventory Command Center</h1>
-    <p>Welcome to your product dashboard. Below displays data about your inventory.</p>
-    <h2>Dynamic content</h2>
-    <p>Your inventory has the following record counts:</p>
-    <ul>
-        <li><strong>Products:</strong> {{ num_products }}</li>
-        <li><strong>Products currently in stock:</strong> {{ num_instances_available }}</li>
-        <li><strong>Brands:</strong> {{ num_brands }} </li>
-        <li><strong>Category Types:</strong> {{ num_categories }}</li>
-    </ul>
+
+    <div class="container">
+        <h1>Inventory Command Center</h1>
+        <p>Welcome to your product dashboard. Below displays data about your inventory.</p>
+        <h2>Dynamic content</h2>
+        <p>Your inventory has the following record counts:</p>
+
+        <div class="row">
+
+            <div class="col-sm-2">
+                <div class="card text-white text-center bg-secondary mb-3">
+                    <div class="card-header"><strong>Products</strong></div>
+                    <div class="card-body"><strong>{{ num_products }}</strong></div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="card text-white text-center bg-secondary mb-3">
+                    <div class="card-header"><strong>Products in Stock</strong></div>
+                    <div class="card-body"><strong>{{ num_instances_available }}</strong></div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="card text-white text-center bg-secondary mb-3">
+                    <div class="card-header"><strong>Brands</strong></div>
+                    <div class="card-body"><strong>{{ num_brands }}</strong></div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="card text-white text-center bg-secondary mb-3">
+                    <div class="card-header"><strong>Categories</strong></div>
+                    <div class="card-body"><strong>{{ num_categories }}</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

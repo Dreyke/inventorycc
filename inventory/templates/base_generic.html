@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
 <body>
 
     <!-- Header -->
     <div class="navbar navbar-expand-lg navbar-light bg-secondary justify-content-between text-white">
-        <a class="navbar-brand text-white" href="{% url 'index' %}">Temp Home Name</a>
+        <a class="navbar-brand text-white" href="{% url 'index' %}">ICC</a>
 
         <div>
         {% if user.is_authenticated %}
@@ -27,9 +30,9 @@
     <!-- Sidebar nav-->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-3 col-xl-2 bd-sidebar card">
+            <div class="navbar-left bg-light">
                 {% block sidebar %}
-                <nav class="nav flex-column nav-pills">
+                <nav class="nav flex-column py-2 sticky-top">
                     <a class="nav-link" href="{% url 'index' %}">Dashboard</a>
                     <a class="nav-link" href="{% url 'products' %}">View All Products</a>
                     <a class="nav-link" href="{% url 'product-create' %}">Add New Product</a>

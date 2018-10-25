@@ -18,7 +18,6 @@
             <tr>
                 <th scope="col">Brand Name</th>
                 <th scope="col">Brand Website</th>
-                <th scope="col">Product Count</th>
                 <th scope="col">Action</th>
             </tr>
             </thead>
@@ -28,7 +27,6 @@
                 <tr>
                     <td><a href="{{ brand.get_absolute_url }}">{{ brand }}</a></td>
                     <td>{{ brand.website }}</td>
-                    <td>Place holder for product count</td>
                     <td>
                         <a class="btn" href="{% url 'brand-update' brand.pk%}">Update</a>
                         <a class="btn" href="{% url 'brand-delete' brand.pk %}">Delete</a>
