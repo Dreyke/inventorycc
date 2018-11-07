@@ -1,4 +1,4 @@
-# midtermproject
+# midtermproject - Inventory Command Center
 
 # TODO List
 This project is still a major WIP. Below are a list of items to be completed before end of year [2018], in no particular order.
