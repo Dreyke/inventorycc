@@ -19,3 +19,4 @@ This project is still a major WIP. Below are a list of items to be completed bef
 13. Add more available fields to add for an item [Date, Location, Sublocation, Custom info, etc..]
 14. Add search functionality. This will be an Ajax live search function
 15. Alerts for low inventory
+16. Add unit tests
