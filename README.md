@@ -1,4 +1,4 @@
-# midtermproject - Inventory Command Center
+# Inventory Command Center
 
 # TODO List
 This project is still a major WIP. Below are a list of items to be completed before end of year [2018], in no particular order.
@@ -8,7 +8,7 @@ This project is still a major WIP. Below are a list of items to be completed bef
 2. Better organize project structure
 3. Add login functions
 4. Add ability for users to add categories, flavors, etc. via the side menu
-5. Add ability for admin configure user rights
+5. Add ability for admin to configure user rights
 6. Add email functionality [password resets, confirmations, etc.]
 7. Create a dashboard
 8. Put project onto Heroku
