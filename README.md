@@ -21,3 +21,4 @@ This project is still a major WIP. Below are a list of items to be completed bef
 15. Add search functionality. This will be an Ajax live search function
 16. Alerts for low inventory
 17. Add unit tests
+18. Optimize, optimize, optimize..
