@@ -20,6 +20,8 @@
         <li class="list-group-item"><strong>Amount in Inventory:</strong> {{ product.inventory_amount }}</li>
         <li class="list-group-item"><strong>Flavors:</strong> {% for flavors in product.flavors.all %} {{ flavors }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
         <li class="list-group-item"><strong>Category:</strong> {% for category in product.category.all %} {{ category }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+        <li class="list-group-item"><strong>Date Added:</strong> {{ product.date_added }}</li>
+        <li class="list-group-item"><strong>Custom Field:</strong> {{ product.custom_field }}</li>
     </ul>
     <br>
     <a class="btn btn-success my-2 my-sm-0" href="{% url 'product-update' product.pk %}">Update</a>

@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="script" href="{% static 'js/navbar.js' %}">
 </head>
 
 <body>
@@ -32,11 +33,11 @@
         <div class="row">
             <div class="navbar-left bg-light">
                 {% block sidebar %}
-                <nav class="nav flex-column py-2 sticky-top">
+                <nav class="nav flex-column py-2 sticky-top" id="accordion">
                     <a class="nav-link" href="{% url 'index' %}">Dashboard</a>
-                    <a class="nav-link" href="{% url 'products' %}">View All Products</a>
+                    <a class="nav-link" href="{% url 'products' %}">Product List</a>
                     <a class="nav-link" href="{% url 'product-create' %}">Add New Product</a>
-                    <a class="nav-link" href="{% url 'brands' %}">View All Brands</a>
+                    <a class="nav-link" href="{% url 'brands' %}">Brand List</a>
                     <a class="nav-link" href="{% url 'brand-create' %}">Add New Brand</a>
                 </nav>
                 {% endblock %}

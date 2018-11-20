@@ -38,6 +38,8 @@ class Product(models.Model):
     category = models.ManyToManyField(Category, help_text="Select a category for this product")
     flavors = models.ManyToManyField(Flavor, help_text="Select available flavors for this product")
 
+    # field for user to enter custom data
+    custom_field = models.CharField(max_length=100, null=True)
     def __str__(self):
         """String for representing Model object"""
         return self.name
