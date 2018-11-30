@@ -21,6 +21,11 @@
         <li class="list-group-item"><strong>Flavors:</strong> {% for flavors in product.flavors.all %} {{ flavors }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
         <li class="list-group-item"><strong>Category:</strong> {% for category in product.category.all %} {{ category }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
         <li class="list-group-item"><strong>Date Added:</strong> {{ product.date_added }}</li>
+
+        {% if product.product_image %}
+        <li class="list-group-item"><strong>Product Image:</strong> <img src="{{ product.product_image.url }}" height="200"/> </li>
+        {% endif %}
+
         <li class="list-group-item"><strong>Custom Field:</strong> {{ product.custom_field }}</li>
     </ul>
     <br>

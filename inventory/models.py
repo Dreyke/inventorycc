@@ -33,6 +33,7 @@ class Product(models.Model):
     serving_size = models.IntegerField(help_text="Enter product serving size.")
     inventory_amount = models.IntegerField(help_text="Enter inventory amount for product.")
     date_added = models.DateTimeField(auto_now=False, auto_now_add=True)
+    product_image = models.ImageField(max_length=255, upload_to='product_images/%Y/%m/%d/', null=True, blank=True)
 
     # ManyToManyField used because categories and flavors can contain different inventory. Products can cover different categories.
     category = models.ManyToManyField(Category, help_text="Select a category for this product")

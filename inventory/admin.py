@@ -17,4 +17,4 @@ admin.site.register(Brand, BrandAdmin)
 #register the admin classes for Product using decorator
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('code', 'name', 'brand', 'list_price', 'inventory_amount', 'date_added', 'custom_field')
+    list_display = ('code', 'name', 'brand', 'list_price', 'inventory_amount', 'date_added', 'custom_field', 'product_image')
