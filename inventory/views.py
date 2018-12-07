@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
-# Create your views here.
 @login_required
 def index(request):
     """View function for home page of site"""
