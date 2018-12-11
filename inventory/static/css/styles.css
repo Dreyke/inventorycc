@@ -13,15 +13,3 @@ body {
     -ms-transform: rotate(90deg);  /* IE 9 */
     transform: rotate(90deg);  /* Standard syntax */
 }
-
-.navbar-left {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-}
-
-.navbar {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-}

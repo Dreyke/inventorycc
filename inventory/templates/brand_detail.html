@@ -3,7 +3,7 @@
 {% block content %}
     <h1>{{ brand.brand_name }}</h1>
     <hr>
-    <p><strong>Website:</strong> {{ brand.website }}</p>
+    <p><strong>Website: </strong><a href="{{ brand.website }}">{{ brand.website }}</a></p>
     <a class="btn btn-success my-2 my-sm-0" href="{% url 'brand-update' brand.pk %}">Update Brand</a>
     <a class="btn btn-danger my-2 my-sm-0" href="{% url 'brand-delete' brand.pk %}">Delete</a>
 
