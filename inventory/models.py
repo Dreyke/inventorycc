@@ -78,11 +78,12 @@ class ProductInstance(models.Model):
     class Meta:
         permissions = (("can_mark_stock", "Set product as in stock"),)
 
+    @property
     def stock_status(self):
         if Product.inventory_amount < 1:
-           self.status = 'y'
+           self.stock = 'y'
         else:
-            self.status = 'n'
+            self.stock = 'n'
         return self.stock_status
 
     def __str__(self):
@@ -94,6 +95,8 @@ class Brand(models.Model):
     """Model representing product brand"""
     brand_name = models.CharField(max_length=100)
     website = models.URLField(max_length=100)
+    brand_description = models.TextField(max_length=200, help_text="Enter Brand Description", null=True)
+    brand_image = models.ImageField(max_length=255, upload_to='brand_images/%Y/%m/%d/', null=True, blank=True)
 
     def get_absolute_url(self):
         """returns the url to access a brand instance"""

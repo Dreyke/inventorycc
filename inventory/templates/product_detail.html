@@ -1,36 +1,42 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>{{ product.name }}</h1>
+    <div class="container">
 
-    <div>
-        {% for stock in product.productinstance_set.all %}
-          <hr>
-          <p class="{% if stock.status == 'y' %}text-success{% elif stock.status == 'n' %}text-danger{% else %}text-warning{% endif %}">{{ stock.get_status_display }}</p>
-        {% endfor %}
+        <div class="product-content" style="display: flex; margin-top: 10px;">
+            {% if product.product_image %}
+            <img src="{{ product.product_image.url }}" style="margin-right: 10px; display: block; height: 125px"/>
+            {% endif %}
+            <h1>{{ product.name }}</h1>
+        </div>
+
+        <div>
+            {% for stock in product.productinstance_set.all %}
+                <hr>
+                <p class="{% if stock.status == 'y' %}text-success{% elif stock.status == 'n' %}text-danger{% else %}text-warning{% endif %}">{{ stock.get_status_display }}</p>
+            {% endfor %}
+        </div>
+        <hr>
+
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Product Code:</strong> {{ product.code }}</li>
+            <li class="list-group-item"><strong>Brand:</strong> <a href="{% url 'brand-detail' product.brand.pk %}">{{ product.brand }}</a></li>
+            <li class="list-group-item"><strong>Description:</strong> {{ product.description }}</li>
+            <li class="list-group-item"><strong>List Price: </strong>${{ product.list_price }}</li>
+            <li class="list-group-item"><strong>Discount Percent:</strong> {{ product.discount_percent }}%</li>
+            <li class="list-group-item"><strong>Final Price: </strong>${{ product.total_price }}</li>
+            <li class="list-group-item"><strong>Serving Size:</strong> {{ product.serving_size }}</li>
+            <li class="list-group-item"><strong>Amount in Inventory:</strong> {{ product.inventory_amount }}</li>
+            <li class="list-group-item"><strong>Flavors:</strong> {% for flavors in product.flavors.all %} {{ flavors }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+            <li class="list-group-item"><strong>Category:</strong> {% for category in product.category.all %} {{ category }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+            <li class="list-group-item"><strong>Date Added:</strong> {{ product.date_added }}</li>
+            <li class="list-group-item"><strong>Custom Field:</strong> {{ product.custom_field }}</li>
+        </ul>
+        <br>
+        <div style="margin-bottom: 10px">
+            <a class="btn btn-success my-2 my-sm-0" href="{% url 'product-update' product.pk %}">Update</a>
+            <a class="btn btn-danger my-2 my-sm-0" href="{% url 'product-delete' product.pk %}">Delete</a>
+        </div>
     </div>
-
-    <ul class="list-group">
-        <li class="list-group-item"><strong>Product Code:</strong> {{ product.code }}</li>
-        <li class="list-group-item"><strong>Brand:</strong> <a href="{% url 'brand-detail' product.brand.pk %}">{{ product.brand }}</a></li>
-        <li class="list-group-item"><strong>Description:</strong> {{ product.description }}</li>
-        <li class="list-group-item"><strong>List Price:</strong> {{ product.list_price }}</li>
-        <li class="list-group-item"><strong>Discount Percent:</strong> {{ product.discount_percent }}</li>
-        <li class="list-group-item"><strong>Final Price:</strong> {{ product.total_price }}</li>
-        <li class="list-group-item"><strong>Serving Size:</strong> {{ product.serving_size }}</li>
-        <li class="list-group-item"><strong>Amount in Inventory:</strong> {{ product.inventory_amount }}</li>
-        <li class="list-group-item"><strong>Flavors:</strong> {% for flavors in product.flavors.all %} {{ flavors }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
-        <li class="list-group-item"><strong>Category:</strong> {% for category in product.category.all %} {{ category }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
-        <li class="list-group-item"><strong>Date Added:</strong> {{ product.date_added }}</li>
-
-        {% if product.product_image %}
-        <li class="list-group-item"><strong>Product Image:</strong> <img src="{{ product.product_image.url }}" height="200"/> </li>
-        {% endif %}
-
-        <li class="list-group-item"><strong>Custom Field:</strong> {{ product.custom_field }}</li>
-    </ul>
-    <br>
-    <a class="btn btn-success my-2 my-sm-0" href="{% url 'product-update' product.pk %}">Update</a>
-    <a class="btn btn-danger my-2 my-sm-0" href="{% url 'product-delete' product.pk %}">Delete</a>
 
 {% endblock %}
