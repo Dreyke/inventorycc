@@ -14,7 +14,7 @@
 <body>
 
     <!-- Header -->
-    <div class="navbar navbar-expand-lg navbar-light bg-secondary justify-content-between text-white">
+    <nav class="navbar bg-dark justify-content-between text-white">
         <a class="navbar-brand text-white" href="{% url 'index' %}">Inventory Control Center</a>
 
         <div>
@@ -25,15 +25,15 @@
             <a class="btn btn-outline-light my-2 my-sm-0" href="{% url 'login' %}?next={{ request.path }}">Login</a>
         {% endif %}
         </div>
-    </div>
+    </nav>
 
     <!-- Sidebar nav-->
     {% if user.is_authenticated %}
     <div class="container-fluid">
-        <div class="row">
-            <div class="navbar-left bg-light">
+        <div class="row wrapper">
+            <div class="bg-light">
                 {% block sidebar %}
-                <nav class="nav flex-column py-2 sticky-top" id="accordion">
+                <nav class="nav flex-column py-2 sticky-top">
                     <a class="nav-link" href="{% url 'index' %}">Dashboard</a>
                     <a class="nav-link" href="{% url 'products' %}">Product List</a>
                     <a class="nav-link" href="{% url 'product-create' %}">Add New Product</a>

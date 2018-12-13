@@ -123,12 +123,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/media/'
+MEDIA_ROOT = 'media'
 
 # Redirect to home URL after login
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'inventory'
+LOGOUT_REDIRECT_URL = '/'
 
 # used for development purposes. Emails do not actually send. Logs emails in console
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'

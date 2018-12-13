@@ -2,14 +2,7 @@ body {
     font-family: 'Titillium Web', sans-serif;
 }
 
-/* nav bar stuff */
-.bs-example {
-    margin: 20px;
-}
-
-.rotate {
-    -webkit-transform: rotate(90deg);  /* Chrome, Safari, Opera */
-    -moz-transform: rotate(90deg);  /* Firefox */
-    -ms-transform: rotate(90deg);  /* IE 9 */
-    transform: rotate(90deg);  /* Standard syntax */
+.wrapper {
+    min-height: 100vh;
+    max-height: 100%;
 }
