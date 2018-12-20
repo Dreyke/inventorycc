@@ -82,7 +82,7 @@ class BrandCreate(CreateView):
 class BrandUpdate(UpdateView):
     template_name = 'brand_form.html'
     model = Brand
-    fields = ['brand_name', 'website']
+    fields = '__all__'
 
 class BrandDelete(DeleteView):
     template_name = 'brand_confirm_delete.html'

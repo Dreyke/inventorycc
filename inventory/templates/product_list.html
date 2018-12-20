@@ -14,7 +14,7 @@
         <hr>
         <div>
             <form method="GET">
-                <div class="card card-body bg-light">
+                <div class="card card-body bg-light" style="height: 16rem">
                     <h4 style="margin-top: 0">Search</h4>
                     <div class="row">
                         <div class="form-group col-sm-4 col-md-3">
@@ -33,12 +33,12 @@
                             {{ filter.form.category.label_tag }}
                             {% render_field filter.form.category class="form-control form-control-sm" %}
                         </div>
-                        <div class="form-group col-sm-4 col-md-3">
+                        <div class="form-group col-sm-4 col-md-3 ml-auto">
                             {{ filter.form.ordering.label_tag }}
                             {% render_field filter.form.ordering class="form-control form-control-sm" %}
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary ml-auto p-2">Search</button>
+                    <button type="submit" class="btn btn-primary mr-auto">Search</button>
                 </div>
             </form>
         </div>
@@ -46,7 +46,7 @@
         <hr>
 
         <!-- product table displaying product information -->
-        <table class="table table-striped text-center">
+        <table class="table table-striped text-center table-hover">
             <thead class="table-info">
             <tr>
                 <th scope="col">Code</th>

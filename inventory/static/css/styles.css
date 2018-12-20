@@ -1,8 +1,12 @@
 body {
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .wrapper {
     min-height: 100vh;
     max-height: 100%;
+}
+
+.fa {
+    transform: translateY(-30%);
 }

@@ -4,43 +4,54 @@
 
 {% block content %}
 
-    <div class="jumbotron" style="margin-top: 10px">
-    <div class="container">
-        <h1>Inventory Control Center</h1>
-        <p>Welcome to your product dashboard. Below displays data about your inventory.</p>
-    </div>
+    <div class="jumbotron text-center shadow-sm" style="margin-top: 10px; height: 14rem">
+        <div class="container">
+            <h1 class="display-4">Admin Dashboard</h1>
+            <hr>
+            <p class="lead">Welcome to your product dashboard. Below displays data about your inventory.</p>
+        </div>
     </div>
 
     <div class="container">
         <div class="row">
 
             <div class="col-sm-3">
-                <div class="card shadow-lg text-white text-center bg-secondary mb-3">
-                    <div class="card-header"><strong>Products</strong></div>
-                    <div class="card-body"><strong>{{ num_products }}</strong></div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card shadow-lg text-white text-center bg-success mb-3">
-                    <div class="card-header"><strong>Products In Stock</strong></div>
-                    <div class="card-body"><strong>{{ num_instances_available }}</strong></div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card shadow-lg text-white text-center bg-info mb-3">
-                    <div class="card-header"><strong>Brands</strong></div>
-                    <div class="card-body"><strong>{{ num_brands }}</strong></div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card shadow-lg text-white text-center bg-danger mb-3">
-                    <div class="card-icon"><span class="glyphicon glyphicon-warning-sign"></span>
-                    <div class="card-header"><strong>Low Inventory Products</strong></div>
-                    <div class="card-body"><strong>{{ low_inventory }}</strong></div>
+                <div class="card shadow-lg text-white text-center bg-secondary mb-3" style="height: 12rem">
+                    <div class="card-header" style="font-size: 20px">
+                        <div><span class="fa fa-cubes fa-lg"></span></div>
+                        <strong>Products</strong>
                     </div>
+                    <div class="card-body" style="font-size: 35px"><strong>{{ num_products }}</strong></div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="card shadow-lg text-white text-center bg-success mb-3" style="height: 12rem">
+                    <div class="card-header" style="font-size: 20px">
+                        <div><span class="fa fa-linode fa-lg"></span></div>
+                        <strong>Products In Stock</strong>
+                    </div>
+                    <div class="card-body" style="font-size: 35px"><strong>{{ num_instances_available }}</strong></div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="card shadow-lg text-white text-center bg-info mb-3" style="height: 12rem">
+                    <div class="card-header" style="font-size: 20px">
+                        <div><span class="fa fa-user-plus fa-lg"></span></div>
+                        <strong>Brands</strong>
+                    </div>
+                    <div class="card-body" style="font-size: 35px"><strong>{{ num_brands }}</strong></div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="card shadow-lg text-white text-center bg-danger mb-3" style="height: 12rem">
+                    <div class="card-header" style="font-size: 20px">
+                        <div><span class="fa fa-exclamation-triangle fa-lg"></span></div>
+                        <strong>Low Inventory Products</strong>
+                    </div>
+                    <div class="card-body" style="font-size: 35px"><strong>{{ low_inventory }}</strong></div>
                 </div>
             </div>
         </div>

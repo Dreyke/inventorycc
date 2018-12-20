@@ -13,16 +13,16 @@
         <hr>
         <!-- Search filter -->
         <div>
-            <form method="get">
-                <div class="card card-body bg-light">
+            <form method="GET">
+                <div class="card card-body bg-light" style="height: 12rem">
                     <h4 style="margin-top: 0">Search</h4>
                     <div class="row">
                         <div class="form-group col-sm-4 col-md-3">
                             {{ filter.form.brand_name.label_tag }}
-                            {% render_field filter.form.brand_name class="form-control" %}
+                            {% render_field filter.form.brand_name class="form-control form-control-sm" %}
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary ml-auto p-2">Search</button>
+                    <button type="submit" class="btn btn-primary mr-auto">Search</button>
                 </div>
             </form>
         </div>
