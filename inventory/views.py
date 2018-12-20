@@ -5,6 +5,7 @@ from django.db import connection
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from .filters import ProductFilter, BrandFilter
 
 @login_required
 def index(request):
@@ -14,10 +15,6 @@ def index(request):
     num_products = connection.cursor()
     num_products.execute("SELECT count(*) FROM inventory_product")
     product_row = num_products.fetchone()
-
-    num_categories = connection.cursor()
-    num_categories.execute("SELECT count(*) FROM inventory_category")
-    category_row = num_categories.fetchone()
 
     # Available inventory
     num_instances_available = connection.cursor()
@@ -37,7 +34,6 @@ def index(request):
         'num_products': product_row[0],
         'num_instances_available': instances_available_row[0],
         'num_brands': brand_row[0],
-        'num_categories': category_row[0],
         'low_inventory': low_inventory_dash[0]
     }
 
@@ -51,6 +47,11 @@ class ProductListView(generic.ListView):
     context_object_name = 'products'
     paginate_by = 10
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = ProductFilter(self.request.GET, queryset=self.get_queryset())
+        return context
+
 class ProductDetailView(generic.DetailView):
     template_name = 'product_detail.html'
     model = Product
@@ -61,6 +62,11 @@ class BrandListView(generic.ListView):
     model = Brand
     context_object_name = 'brands'
     paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = BrandFilter(self.request.GET, queryset=self.get_queryset())
+        return context
 
 
 class BrandDetailView(generic.DetailView):

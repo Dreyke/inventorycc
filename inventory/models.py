@@ -90,6 +90,7 @@ class ProductInstance(models.Model):
         return f'{self.id} ({self.product})'
 
 class Brand(models.Model):
+
     """Model representing product brand"""
     brand_name = models.CharField(max_length=100)
     website = models.URLField(max_length=100)
