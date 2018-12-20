@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
 from inventory.models import ProductInstance, Product, Flavor, Brand, Category
 from django.views import generic
@@ -45,12 +46,21 @@ class ProductListView(generic.ListView):
     template_name = 'product_list.html'
     model = Product
     context_object_name = 'products'
-    paginate_by = 10
+    paginate_by = 5
 
+    # Function for the product list filter
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['filter'] = ProductFilter(self.request.GET, queryset=self.get_queryset())
         return context
+
+    # Function for the product list pagination
+    def get_queryset(self, *args, **kwargs):
+        if self.kwargs:
+            return Product.objects.filter(category=self.kwargs['category']).order_by('code')
+        else:
+            query = Product.objects.all().order_by('code')
+            return query
 
 class ProductDetailView(generic.DetailView):
     template_name = 'product_detail.html'
@@ -67,7 +77,6 @@ class BrandListView(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['filter'] = BrandFilter(self.request.GET, queryset=self.get_queryset())
         return context
-
 
 class BrandDetailView(generic.DetailView):
     template_name = 'brand_detail.html'

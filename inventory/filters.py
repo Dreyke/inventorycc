@@ -8,7 +8,7 @@ class ProductFilter(django_filters.FilterSet):
         ('descending', 'Descending')
     )
 
-    ordering = django_filters.ChoiceFilter(label='Sort by Date', choices=CHOICES, method='filter_by_order')
+    ordering = django_filters.ChoiceFilter(label='Sort By Date', choices=CHOICES, method='filter_by_order')
 
     code = django_filters.CharFilter(lookup_expr='exact')
     name = django_filters.CharFilter(lookup_expr='exact')
