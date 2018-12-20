@@ -2,18 +2,27 @@
 
 {% block content %}
     <div class="container">
-
-        <div class="product-content" style="display: flex; margin-top: 10px;">
-            {% if product.product_image %}
-            <img src="{{ product.product_image.url }}" style="margin-right: 10px; display: block; height: 125px"/>
-            {% endif %}
-            <h1>{{ product.name }}</h1>
+        <div class="row">
+            <div class="product-content" style="display: flex; margin-top: 10px;">
+                <div class="col">
+                    {% if product.product_image %}
+                        <img src="{{ product.product_image.url }}" style="margin-right: 10px; display: block; height: 125px"/>
+                    {% endif %}
+                </div>
+                <div class="col text-center">
+                    <h1>{{ product.name }}</h1>
+                </div>
+            </div>
         </div>
 
         <div>
             {% for stock in product.productinstance_set.all %}
                 <hr>
-                <p class="{% if stock.status == 'y' %}text-success{% elif stock.status == 'n' %}text-danger{% else %}text-warning{% endif %}">{{ stock.get_status_display }}</p>
+                {% if product.inventory_amount < 0 %}
+                    <p class="text-danger" style="font-size: 18px">{{ stock.get_status_display }}</p>
+                {% else %}
+                    <p class="text-success" style="font-size: 18px">{{ stock.get_status_display }}</p>
+                {% endif %}
             {% endfor %}
         </div>
         <hr>

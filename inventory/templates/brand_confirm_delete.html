@@ -4,12 +4,22 @@
 
     <div class="container">
         <div class="card card-body bg-light" style="margin-top: 10px">
-            <h1>Delete Brand</h1>
-            <p>Are you sure you want to delete this brand: <strong>{{ brand }}</strong>?</p>
+
+            {% if brand %}
+                {% if brand.product_set.count > 0 %}
+                    <h1>Delete Brand</h1>
+                    <p>Are you sure you want to delete this brand: <strong>{{ brand }}</strong>?</p>
+                    <p>{{ brand }} has {{ brand.product_set.count }} product(s) associated with them.</p>
+                {% else %}
+                    <h1>Delete Brand</h1>
+                    <p>Are you sure you want to delete this brand: <strong>{{ brand }}</strong>?</p>
+                    <p>{{ brand }} has no products associated with them.</p>
+                {% endif %}
+            {% endif %}
 
             <form action="" method="POST">
                 {% csrf_token %}
-                <input class="btn btn-danger my-2 my-sm-0" type="submit" value="Yes - Delete">
+                <input class="btn btn-danger my-2 my-sm-0" type="submit" value="Confirm Delete">
             </form>
         </div>
     </div>

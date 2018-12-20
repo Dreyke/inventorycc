@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <div class="jumbotron text-center shadow-sm" style="margin-top: 10px; height: 14rem">
+    <div class="jumbotron text-center shadow-sm py-4" style="margin-top: 10px; height: 14rem">
         <div class="container">
             <h1 class="display-4">Admin Dashboard</h1>
             <hr>
@@ -28,7 +28,7 @@
             <div class="col-sm-3">
                 <div class="card shadow-lg text-white text-center bg-success mb-3" style="height: 12rem">
                     <div class="card-header" style="font-size: 20px">
-                        <div><span class="fa fa-linode fa-lg"></span></div>
+                        <div><span class="fa fa-th fa-lg"></span></div>
                         <strong>Products In Stock</strong>
                     </div>
                     <div class="card-body" style="font-size: 35px"><strong>{{ num_instances_available }}</strong></div>
@@ -38,7 +38,7 @@
             <div class="col-sm-3">
                 <div class="card shadow-lg text-white text-center bg-info mb-3" style="height: 12rem">
                     <div class="card-header" style="font-size: 20px">
-                        <div><span class="fa fa-user-plus fa-lg"></span></div>
+                        <div><span class="fa fa-user-circle fa-lg"></span></div>
                         <strong>Brands</strong>
                     </div>
                     <div class="card-body" style="font-size: 35px"><strong>{{ num_brands }}</strong></div>

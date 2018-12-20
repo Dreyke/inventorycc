@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'inventory.apps.RetailAppConfig',
     'widget_tweaks',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE = [
@@ -58,8 +58,8 @@ ROOT_URLCONF = 'midtermproject2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'inventory/templates'),
-                 os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'inventory/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,8 +132,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Redirect to home URL after login
-LOGIN_REDIRECT_URL = 'inventory'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/inventory/'
+LOGOUT_REDIRECT_URL = '/inventory/'
 
 # used for development purposes. Emails do not actually send. Logs emails in console
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'

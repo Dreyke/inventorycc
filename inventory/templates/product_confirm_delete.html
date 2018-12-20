@@ -4,13 +4,23 @@
 
     <div class="container">
         <div class="card card-body bg-light" style="margin-top: 10px">
-
-            <h1>Delete Item</h1>
-            <p>Are you sure you want to permanently delete this item: <strong>{{ product }}</strong>?</p>
+            {% if product %}
+                {% if product.inventory_amount > 0 %}
+                    <h1>Delete Item</h1>
+                    <p>Are you sure you want to permanently delete this product: <strong><a href="{{ product.get_absolute_url }}">{{ product }}</a></strong>?</p>
+                    <p>There are <strong>{{ product.inventory_amount }}</strong> items in stock!</p>
+                {% else %}
+                    <h1>Delete Item</h1>
+                    <p>Are you sure you want to permanently delete this product: <strong><a href="{{ product.get_absolute_url }}">{{ product }}</a></strong>?</p>
+                    <p>{{ product }} has no items in stock.</p>
+                {% endif %}
+            {% endif %}
 
             <form action="" method="POST">
                 {% csrf_token %}
-                <input class="btn btn-danger my-2 my-sm-0" type="submit" value="Confirm Delete">
+                <button class="btn btn-danger my-2 my-sm-0" type="submit" id="btn-product-delete">
+                    Confirm Delete
+                </button>
             </form>
         </div>
     </div>

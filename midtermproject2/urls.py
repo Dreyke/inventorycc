@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 # uses include() to add paths from the inventory app
 # add url maps to redirect the base URL to app
 # use static() to add url mapping to serve static files during development (only)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
