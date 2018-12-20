@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from inventory.models import ProductInstance, Product, Flavor, Brand, Category
 from django.views import generic
-from django.db import connection, transaction
+from django.db import connection
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -28,12 +28,17 @@ def index(request):
     num_brands.execute("SELECT count(*) FROM inventory_brand")
     brand_row = num_brands.fetchone()
 
+    low_inventory = connection.cursor()
+    low_inventory.execute("SELECT count(*) FROM inventory_product WHERE inventory_amount < 30")
+    low_inventory_dash = low_inventory.fetchone()
+
 
     context = {
         'num_products': product_row[0],
         'num_instances_available': instances_available_row[0],
         'num_brands': brand_row[0],
-        'num_categories': category_row[0]
+        'num_categories': category_row[0],
+        'low_inventory': low_inventory_dash[0]
     }
 
     # render the HTML template index.html with the data in the context variable

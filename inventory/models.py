@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 import uuid
+from decimal import Decimal
 
 # Create your models here.
 class Category(models.Model):
@@ -29,7 +30,7 @@ class Product(models.Model):
     code = models.CharField('Product Code', max_length=10, help_text='Must be first 4 characters of the brand followed by yy-mm-dd')
     description = models.TextField(max_length=200, help_text="Enter a brief description of the product")
     list_price = models.DecimalField(max_digits=5, decimal_places=2)
-    discount_percent = models.IntegerField()
+    discount_percent = models.DecimalField(max_digits=3, decimal_places=0)
     serving_size = models.IntegerField(help_text="Enter product serving size.")
     inventory_amount = models.IntegerField(help_text="Enter inventory amount for product.")
     date_added = models.DateTimeField(auto_now=False, auto_now_add=True)
@@ -49,19 +50,26 @@ class Product(models.Model):
         """Returns the url to access a detail record for this product"""
         return reverse('product-detail', args=[str(self.id)])
 
+    @property
+    def total_price(self):
+        """Returns the final price calculated from list price and discount percent"""
+        final_price = (self.list_price - (self.discount_percent / 100) * self.list_price)
+        return round(final_price, 2)
+
 class ProductInstance(models.Model):
     """Model representing a specific copy of a product"""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this product.")
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
 
-    STOCK = [
+
+    stock = [
         ('y', 'In Stock'),
         ('n', 'Out of Stock'),
     ]
 
     status = models.CharField(
         max_length=1,
-        choices=STOCK,
+        choices=stock,
         blank=True,
         default='n',
         help_text="Product Availability",
@@ -69,6 +77,13 @@ class ProductInstance(models.Model):
 
     class Meta:
         permissions = (("can_mark_stock", "Set product as in stock"),)
+
+    def stock_status(self):
+        if Product.inventory_amount < 1:
+           self.status = 'y'
+        else:
+            self.status = 'n'
+        return self.stock_status
 
     def __str__(self):
         """String for representing the Model object"""

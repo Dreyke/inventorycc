@@ -19,15 +19,11 @@ from django.conf.urls import include
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
-from inventory.forms import LoginForm
-from django.contrib.auth import views as auth_views
 
 # uses include() to add paths from the inventory app
 # add url maps to redirect the base URL to app
 # use static() to add url mapping to serve static files during development (only)
 urlpatterns = [
-    path('login/', auth_views.auth_login, {'authentication_form':LoginForm}),
-    path('logout/', auth_views.auth_logout, name='logout'),
     path('admin/', admin.site.urls),
     path('inventory/', include('inventory.urls')),
     path('', RedirectView.as_view(url='/inventory/')),

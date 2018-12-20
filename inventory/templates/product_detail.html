@@ -16,6 +16,7 @@
         <li class="list-group-item"><strong>Description:</strong> {{ product.description }}</li>
         <li class="list-group-item"><strong>List Price:</strong> {{ product.list_price }}</li>
         <li class="list-group-item"><strong>Discount Percent:</strong> {{ product.discount_percent }}</li>
+        <li class="list-group-item"><strong>Final Price:</strong> {{ product.total_price }}</li>
         <li class="list-group-item"><strong>Serving Size:</strong> {{ product.serving_size }}</li>
         <li class="list-group-item"><strong>Amount in Inventory:</strong> {{ product.inventory_amount }}</li>
         <li class="list-group-item"><strong>Flavors:</strong> {% for flavors in product.flavors.all %} {{ flavors }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
