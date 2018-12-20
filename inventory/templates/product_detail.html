@@ -18,7 +18,7 @@
         <div>
             {% for stock in product.productinstance_set.all %}
                 <hr>
-                {% if product.inventory_amount < 0 %}
+                {% if stock.status == 'n' %}
                     <p class="text-danger" style="font-size: 18px">{{ stock.get_status_display }}</p>
                 {% else %}
                     <p class="text-success" style="font-size: 18px">{{ stock.get_status_display }}</p>

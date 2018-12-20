@@ -78,6 +78,15 @@ class BrandListView(generic.ListView):
         context['filter'] = BrandFilter(self.request.GET, queryset=self.get_queryset())
         return context
 
+    # Function for the brand list pagination
+    def get_queryset(self, *args, **kwargs):
+        if self.kwargs:
+            return Brand.objects.filter(category=self.kwargs['category']).order_by('brand_name')
+        else:
+            query = Brand.objects.all().order_by('brand_name')
+            return query
+
+
 class BrandDetailView(generic.DetailView):
     template_name = 'brand_detail.html'
     model = Brand
