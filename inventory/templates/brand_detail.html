@@ -2,12 +2,13 @@
 
 {% block content %}
     <div class="container">
-
         <div class="brand-content" style="display: flex; margin-top: 10px">
             {% if brand.brand_image %}
                 <img style="margin-right: 10px; display: block; height: 125px" src="{{ brand.brand_image.url }}"/>
             {% endif %}
-            <h1>{{ brand.brand_name }}</h1>
+            <div class="col text-center py-4" style="display: flex; margin-top: 10px">
+                 <h1>{{ brand.brand_name }}</h1>
+            </div>
         </div>
         <hr>
 
